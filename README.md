@@ -1,2 +1,2 @@
 # Testing-the-Saucedemo
-Testing the Saucedemo Website with Playwright 101
+Testing the Saucedemo Website with Playwright
