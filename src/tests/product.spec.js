@@ -1,5 +1,7 @@
 import { test, expect  } from "../pages/base";
 import { validUsers } from "../test-data/user";
+import { ProductPage } from "../pages/product.page";
+
 
 test.describe('PRODUCT PAGE FUNCTION', () => {
     test.beforeEach(async ({ loginPage, page }) => {
@@ -8,13 +10,13 @@ test.describe('PRODUCT PAGE FUNCTION', () => {
         await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     });
 
-    test('TC-013: Product should correctly sorts item from A to Z', async ({ productPage }) => {
+    test('TC-013: Product should correctly sort items from A to Z', async ({ productPage }) => {
         await productPage.sortItems('az');
         const itemNames = await productPage.getItemNames();
         expect(productPage.isSortedFromAtoZ(itemNames)).toBeTruthy();
     });
 
-    test('TC-014: Product should correctly sorts item from Z to A', async ({ productPage }) => {
+    test('TC-014: Product should correctly sort items from Z to A', async ({ productPage }) => {
         // 1. เลือกการเรียงลำดับ "Name (Z to A)"
         await productPage.sortItems('za');
     
