@@ -1,5 +1,5 @@
 import { test as base } from "@playwright/test";
-import { LoginPage } from "./login.page";
+import { LoginPage } from "./login.page"; // ✅ Correct
 
 type BaseFixture = {
   loginPage: LoginPage;
