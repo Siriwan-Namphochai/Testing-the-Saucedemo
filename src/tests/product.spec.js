@@ -1,7 +1,7 @@
 import { test, expect  } from "../pages/base";
 import { validUsers } from "../test-data/user";
 
-test.describe('PRODUCT PAGE FUNCTION', () => {
+test.describe('เระ ', () => {
     test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goto();
         await loginPage.login(validUsers[0].username, validUsers[0].password);
