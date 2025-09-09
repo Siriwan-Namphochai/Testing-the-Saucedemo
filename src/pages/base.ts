@@ -1,12 +1,20 @@
-import { test as base } from "@playwright/test";
-import { LoginPage } from "./login.page"; // ✅ Correct
+// src/pages/base.ts
 
-type BaseFixture = {
+import { test as base, expect } from '@playwright/test';
+import { LoginPage } from './login.page';
+import { ProductPage } from './product.page';
+
+// สร้าง fixture สำหรับ page objects
+export const test = base.extend<{
   loginPage: LoginPage;
-};
-
-export const test = base.extend<BaseFixture>({
+  productPage: ProductPage;
+}>({
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
+  productPage: async ({ page }, use) => {
+    await use(new ProductPage(page));
+  },
 });
+
+export { expect };
