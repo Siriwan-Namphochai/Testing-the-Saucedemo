@@ -11,7 +11,6 @@ export class ProductPage {
         this.sortDropdown = '[data-test="product-sort-container"]';
         this.itemNames = '.inventory_item_name';
         this.itemPrices = '.inventory_item_price';
-        
     }
 
     async goto() {
@@ -50,4 +49,5 @@ export class ProductPage {
         const sorted = [...prices].sort((a, b) => b - a);
         return JSON.stringify(prices) === JSON.stringify(sorted);
     }
+    
 }

@@ -1,3 +1,4 @@
+// src/tests/product.spec.js
 import { test, expect  } from "../pages/base";
 import { validUsers } from "../test-data/user";
 import { ProductPage } from "../pages/product.page";
