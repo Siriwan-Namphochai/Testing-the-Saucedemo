@@ -6,7 +6,7 @@ export class LoginPage {
     locatorUsername = '#user-name';
     locatorPassword = '#password';
     locatorButtonLogin = '#login-button';
-    locatorErrorMesage = '[data-test="error"]';
+    locatorErrorMessage = '[data-test="error"]';
     locatorDashboard = '.inventory_list';
     /**
      * 
@@ -61,4 +61,13 @@ export class LoginPage {
         const expectedUrl = removeSlashUrl(this.baseUrl);
         return currentUrl === expectedUrl;
     }
+    
+    async isLoginSuccessful() {
+    return await this.dashboard.isVisible();
+    }
+
+    async isLoginFailed() {
+    return await this.page.locator(this.locatorErrorMessage).isVisible();
+    }
+
 }
