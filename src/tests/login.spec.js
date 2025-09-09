@@ -50,9 +50,10 @@ test('TC-004: Should show an error message if log in with both fields blank', as
   expect(await loginPage.isValidUrl()).toBe(true);
 });
 
-for (const { username, password } of validUsers) {
-  test(`TC-005: Should logged in successfully with valid credentials: ${username}`, async ({ loginPage }) => {
+for(const { username, password } of validUsers) {
+  test(`TC-005: Should logged in successfully with valid credentials: ${username}`, async ({ loginPage, page }) => {
     await loginPage.login(username, password);
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     await expect(await loginPage.isLoginSuccessful()).toBeTruthy();
   });
 }

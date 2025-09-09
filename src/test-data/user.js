@@ -1,4 +1,4 @@
-const validUsers = [
+export const validUsers = [
     {
         username:"standard_user",
         password:"secret_sauce"
@@ -21,16 +21,11 @@ const validUsers = [
     }
 ];
 
-const problemUsers = [
+export const problemUsers = [
     {
         username:"locked_out_user",
         password:"secret_sauce"
     }
 ];
 
-module.exports = {
-    validUsers,
-    problemUsers,
-}
-    
 
