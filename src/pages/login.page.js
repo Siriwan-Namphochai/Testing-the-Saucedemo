@@ -18,12 +18,12 @@ export class LoginPage {
 
     async goto() {
         await this.page.goto(this.baseUrl);
-        console.log("DEBUG: Current URL ->", this.page.url()); // ✅ Debug url
+        console.log("DEBUG: Current URL ->", this.page.url()); 
     }
 
     async fillUserPassword(username, password) {
-        await this.page.locator(this.locatorUsername).fill(username);  // ✅ ใช้ parameter
-        await this.page.locator(this.locatorPassword).fill(password);  // ✅ ใช้ parameter
+        await this.page.locator(this.locatorUsername).fill(username);  
+        await this.page.locator(this.locatorPassword).fill(password);  
     }
 
     async clickLogin(){
@@ -49,8 +49,8 @@ export class LoginPage {
 
     async getErrorMessage(){
         try {
-            await this.page.waitForSelector(this.locatorErrorMesage, { state: 'visible' });
-            return await this.page.locator(this.locatorErrorMesage).innerText();
+            await this.page.waitForSelector(this.locatorErrorMessage, { state: 'visible', timeout: 2000  });
+            return await this.page.locator(this.locatorErrorMessage).innerText();
         } catch (e) { 
             return "";
         }
@@ -61,13 +61,15 @@ export class LoginPage {
         const expectedUrl = removeSlashUrl(this.baseUrl);
         return currentUrl === expectedUrl;
     }
-    
-    async isLoginSuccessful() {
-    return await this.dashboard.isVisible();
+    // ตรวจสอบว่าล็อกอินสำเร็จ (dashboard visible)
+        async isLoginSuccessful() {
+    return await this.page.locator(this.locatorDashboard).isVisible();
     }
 
+    // ตรวจสอบว่าล็อกอินล้มเหลว (error message visible)
     async isLoginFailed() {
-    return await this.page.locator(this.locatorErrorMessage).isVisible();
+    const msg = await this.getErrorMessage();
+    return msg !== "";
     }
 
 }
