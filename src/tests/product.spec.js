@@ -88,7 +88,7 @@ test.describe('NAVIGATE TO PRODUCT DETAILS', () => {
 
 });
 
-test.describe('ADD/REMOVE FROM PRODUCT DETAILS PAGE', () => {
+test.describe.only('ADD/REMOVE FROM PRODUCT DETAILS PAGE', () => {
     test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goto();
         await loginPage.login(validUsers[0].username, validUsers[0].password);
@@ -99,6 +99,16 @@ test.describe('ADD/REMOVE FROM PRODUCT DETAILS PAGE', () => {
         await expect(page).toHaveURL('https://www.saucedemo.com/inventory-item.html?id=4');
         await productPage.addToCart();
         await expect(await productPage.getCartBadge()).toHaveText('1');
+
+    });
+    test('TC-017: Remove an item from the cart on the product details page', async ({ productPage, page }) => {
+        await productPage.page.locator('text=Sauce Labs Backpack').click();
+        await expect(page).toHaveURL('https://www.saucedemo.com/inventory-item.html?id=4');
+        await productPage.addToCart();
+        await expect(await productPage.getCartBadge()).toHaveText('1');
+
+        await page.locator('button:has-text("Remove")').click();
+        await expect(await productPage.getCartBadge()).not.toBeVisible();
 
     });
 });
