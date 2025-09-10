@@ -1,3 +1,4 @@
+// src/pages/login.page.js
 import { removeSlashUrl } from "../utils";
 export class LoginPage {
 
@@ -34,7 +35,7 @@ export class LoginPage {
     await this.clickLogin();
     }
 
-    get dashboard() {  // เพิ่ม
+    get dashboard() {  
     return this.page.locator(this.locatorDashboard);
     }
 
