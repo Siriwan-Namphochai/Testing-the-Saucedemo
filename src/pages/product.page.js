@@ -8,9 +8,10 @@ export class ProductPage {
         // Locators
         this.baseUrl = 'https://www.saucedemo.com/';
         this.url = 'inventory.html';
-        this.sortDropdown = '[data-test="product-sort-container"]';
-        this.itemNames = '.inventory_item_name';
-        this.itemPrices = '.inventory_item_price';
+        this.sortDropdown = this.page.locator('[data-test="product-sort-container"]');
+        this.itemNames = this.page.locator('.inventory_item_name');
+        this.itemPrices = this.page.locator('.inventory_item_price');
+        this.cartBadge = this.page.locator('.shopping_cart_badge');
     }
 
     async goto() {
@@ -18,15 +19,15 @@ export class ProductPage {
     }
 
     async sortItems(option) {
-        await this.page.locator(this.sortDropdown).selectOption(option);
+        await this.sortDropdown.selectOption(option);
     }
 
     async getItemNames() {
-        return await this.page.locator(this.itemNames).allTextContents();
+        return await this.itemNames.allTextContents();
     }
 
     async getItemPrices() {
-        const pricesText = await this.page.locator(this.itemPrices).allTextContents();
+        const pricesText = await this.itemPrices.allTextContents();
         return pricesText.map(p => parseFloat(p.replace('$', '')));
     }
 
@@ -49,5 +50,25 @@ export class ProductPage {
         const sorted = [...prices].sort((a, b) => b - a);
         return JSON.stringify(prices) === JSON.stringify(sorted);
     }
-    
+
+    async addToCartProduct(itemId) {
+        const locator = this.page.locator(`[data-test="add-to-cart-${itemId}"]`);
+        await locator.click(); 
+    }
+    async addToCart(itemId) {
+    if (itemId) {
+        await this.page.locator(`[data-test="add-to-cart-${itemId}"]`).click();
+    } else {
+        await this.page.locator('[data-test="add-to-cart"]').click();
+    }
+}
+
+    async removeFromCart(itemId) {
+        const locator = this.page.locator(`[data-test="remove-${itemId}"]`);
+        await locator.click();
+    }
+
+    async getCartBadge() {
+        return this.cartBadge;
+    }
 }
