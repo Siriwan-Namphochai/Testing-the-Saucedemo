@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 
 export class InventoryItemPage {
     constructor(page) {
