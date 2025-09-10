@@ -11,5 +11,6 @@ export class InventoryItemPage {
 
     async clickBackToProducts() {
         await this.backToProductsButton.click();
+        // ทำไมหน้านี้ไม่ถูกอัพพพพ 5555555
     }
 }
