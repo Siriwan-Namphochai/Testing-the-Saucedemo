@@ -1,4 +1,3 @@
-// src/test-data/user.js
 export const validUsers = [
     {
         username:"standard_user",

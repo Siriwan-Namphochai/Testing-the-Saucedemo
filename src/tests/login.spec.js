@@ -1,4 +1,3 @@
-// src/tests/login.spec.js
 import { expect } from "@playwright/test";
 import { test } from "../pages/base";
 import { validUsers, problemUsers } from "../test-data/user";

@@ -1,4 +1,3 @@
-// src/utils/index.js
 export function removeSlashUrl(url = ""){
   let newUrl = url;
   if(url[url.length - 1] === '/'){
