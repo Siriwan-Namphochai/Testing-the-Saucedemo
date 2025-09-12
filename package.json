@@ -4,7 +4,9 @@
   "type": "module",
   "description": "Testing the Saucedemo Website with Playwright 101",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:line": "LINE_ACCESS_TOKEN=7jfKZYIHQIRd3uU/IvLjtHrTFgzFFjZ8hzBbLaGdrBsSh77EvTGiOJVWv/J+b7b0eo8x9k6ra8fTXKRh58N/sF3OIPsAxN25H47EnhagI6fhJlxZGEXuqC7LDmwTZMCcf83FUa18+U62k0miOkyx+AdB04t89/1O/w1cDnyilFU= LINE_USER_ID=Uaf36902dd63945bd9c178a698d8d8b39 npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,6 +15,9 @@
     "@types/node": "^24.3.1"
   },
   "dependencies": {
-    "axios": "^1.12.0"
+    "@line/bot-sdk": "^10.2.0",
+    "axios": "^1.12.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0"
   }
 }
