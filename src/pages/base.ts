@@ -5,6 +5,7 @@ import { LoginPage } from './login.page';
 import { ProductPage } from './product.page';
 import { InventoryItemPage } from './inventoryItem.page';
 import { CartPage } from './cart.page';
+import { CheckoutPage } from './checkout.page';
 
 // สร้าง fixture สำหรับ page objects
 export const test = base.extend<{
@@ -12,6 +13,7 @@ export const test = base.extend<{
   productPage: ProductPage;
   inventoryItemPage: InventoryItemPage;
   cartPage: CartPage;
+  checkoutPage: CheckoutPage;
 }>({
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
@@ -24,7 +26,10 @@ export const test = base.extend<{
   },
   cartPage: async ({ page }, use) => {
         await use(new CartPage(page));
-    },
+  },
+  checkoutPage: async ({ page }, use) => {
+        await use(new CheckoutPage(page));
+  },
 });
 
 export { expect };
