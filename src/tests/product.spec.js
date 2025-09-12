@@ -88,7 +88,7 @@ test.describe('NAVIGATE TO PRODUCT DETAILS', () => {
 
 });
 
-test.describe.only('ADD/REMOVE FROM PRODUCT DETAILS PAGE', () => {
+test.describe('ADD/REMOVE FROM PRODUCT DETAILS PAGE', () => {
     test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goto();
         await loginPage.login(validUsers[0].username, validUsers[0].password);
