@@ -7,6 +7,11 @@ class LineReporter {
     const token = process.env.LINE_ACCESS_TOKEN;
     const userId = process.env.LINE_USER_ID;
 
+    // --- เพิ่ม console.log สำหรับ Debug ตรงนี้ ---
+    console.log('DEBUG (LineReporter): LINE_ACCESS_TOKEN found:', !!token);
+    console.log('DEBUG (LineReporter): LINE_USER_ID found:', !!userId);
+    // ---------------------------------------------
+
     if (!token || !userId) {
       console.log('LINE token or user ID not found. Skipping notification.');
       return;
