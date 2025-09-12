@@ -64,7 +64,7 @@ test.describe("Sauce Demo Checkout E2E Tests", () => {
 
   // --- Tests สำหรับ Checkout Step Two ---
 
-  test.describe.only("Checkout Step Two", () => {
+  test.describe("Checkout Step Two", () => {
     test.beforeEach(async () => {
       await checkoutPage.fillShippingInfo(user.firstName, user.lastName, user.postalCode);
       await expect(checkoutPage.page).toHaveURL(/.*checkout-step-two.html/);
