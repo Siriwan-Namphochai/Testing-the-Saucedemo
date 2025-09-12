@@ -1,40 +1,34 @@
-// src/pages/cart.page.js
+// tests/pages/cart.page.js
+import { expect } from '@playwright/test';
 
 export class CartPage {
-    constructor(page) {
-        this.page = page;
-        this.url = 'https://www.saucedemo.com/cart.html';
-        this.continueShopping = this.page.locator('[data-test="continue-shopping"]'); // Corrected locator
-        this.checkoutButton = this.page.locator('[data-test="checkout"]');
-        this.cartItem = (itemName) => this.page.locator(`text=${itemName}`);
-        this.cartItems = this.page.locator('.cart_item');
-    }
+  constructor(page) {
+    this.page = page;
+    this.cartItems = page.locator('.cart_item');
+    this.cartBadge = page.locator('.shopping_cart_badge');
+    this.continueShoppingBtn = page.locator('[data-test="continue-shopping"]');
+    this.checkoutBtn = page.locator('[data-test="checkout"]');
+    this.removeBackpackBtn = page.locator('button[data-test="remove-sauce-labs-backpack"]');
+  }
 
-    async goto() {
-        await this.page.goto(this.url);
-    }
+  async goto() {
+    await this.page.click('.shopping_cart_link');
+    await expect(this.page).toHaveURL(/cart.html/);
+  }
 
-    async clickContinueShopping() {
-        await this.continueShopping.click();
-    }
-    
-    async clickCheckout() {
-        await this.checkoutButton.click();
-    }
+  async getItemCount() {
+    return await this.cartItems.count();
+  }
 
-    async getNumberOfItemsInCart() {
-        return await this.cartItems.count();
-    }
+  async removeBackpack() {
+    await this.removeBackpackBtn.click();
+  }
 
-    async isItemInCart(itemName) {
-        return await this.cartItem(itemName).isVisible();
-    }
+  async continueShopping() {
+    await this.continueShoppingBtn.click();
+  }
 
-    async getItemPrice(itemName) {
-        return await this.page.locator(`:has(div:has-text("${itemName}")) .inventory_item_price`).textContent();
-    }
-
-    async removeItem(itemName) {
-        await this.page.locator(`[data-test="remove-sauce-labs-${itemName.toLowerCase().replace(/ /g, '-')}"]`).click();
-    }
+  async checkout() {
+    await this.checkoutBtn.click();
+  }
 }

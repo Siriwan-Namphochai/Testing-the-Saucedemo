@@ -8,6 +8,7 @@ test.describe('PRODUCT PAGE FUNCTION', () => {
         await loginPage.goto();
         await loginPage.login(validUsers[0].username, validUsers[0].password);
         await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+        
     });
 
     test('TC-007: Product should correctly sort items from A to Z', async ({ productPage }) => {
