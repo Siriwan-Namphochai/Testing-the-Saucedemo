@@ -4,7 +4,7 @@ import { CartPage } from '../pages/cart.page.js';
 import { LoginPage } from '../pages/login.page.js';
 import { validUsers } from '../test-data/user.js';
 
-test.describe.only('CART PAGE FUNCTION', () => {
+test.describe('CART PAGE FUNCTION', () => {
   test.beforeEach(async ({ page }) => {
     // Login
     const loginPage = new LoginPage(page);
